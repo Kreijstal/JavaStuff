@@ -55,11 +55,11 @@ public class HTTP {
     public void request(String Path, String Method, String[] headers, byte[] Post){
         request(this.createHttpRequests(Path, Method, headers, Post));    
     };
-    public void read(){
+    public void readUpdate(){
         try {
             java.nio.ByteBuffer data = java.nio.ByteBuffer.allocateDirect(32 * 1024);
             //System.out.print("server is connected: "+server.isConnected());
-            while(server.read(data) != -1){
+            if(server.read(data) != -1){
             data.flip();
             while (data.hasRemaining()) {
                 System.out.print("data.hasRemaining is TRUEEE");
